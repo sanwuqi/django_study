@@ -24,4 +24,6 @@ urlpatterns = [
     path('page/<int:pg>', views.pages_view),
     # path('page/2', views.page2_view),
     path('test_html', views.test_html),
+    path('test_if_for', views.test_if_for),
+    path('mycal', views.test_mycal),
 ]

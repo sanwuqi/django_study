@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 # from django.template import loader
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 
 def page_2003_view(request):
@@ -35,3 +36,29 @@ def test_html(request):
     return render(request, 'test_html.html', dic)
     # return HttpResponse(html)
     pass
+
+
+def test_if_for(request):
+    dic = dict()
+    dic['x'] = 10
+    return render(request, 'test_if_for.html', dic)
+
+
+@csrf_exempt
+def test_mycal(request):
+    if request.method == "GET":
+        return render(request, 'mycal.html')
+    elif request.method == "POST":
+        x = int(request.POST['x'])
+        y = int(request.POST['y'])
+        op = request.POST['op']
+        result = 0
+        if op == "add":
+            result = x + y
+        elif op == "sub":
+            result = x - y
+        elif op == "mul":
+            result = x * y
+        elif op == 'div':
+            result = x / y
+        return render(request, 'mycal.html', locals())
