@@ -62,3 +62,16 @@ def test_mycal(request):
         elif op == 'div':
             result = x / y
         return render(request, 'mycal.html', locals())
+
+
+def base_view(request):
+    lst = ['tom', 'Jack']
+    return render(request, 'base.html', locals())
+
+
+def music_view(request):
+    return render(request, 'music.html')
+
+
+def sport_view(request):
+    return render(request, 'sport.html')
