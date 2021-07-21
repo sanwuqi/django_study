@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 # from django.template import loader
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -75,3 +75,18 @@ def music_view(request):
 
 def sport_view(request):
     return render(request, 'sport.html')
+
+
+def test_url(request):
+    return render(request, 'test_url.html')
+
+
+def test_url_result(request, age):
+    # 302
+    from django.urls import reverse
+    url = reverse('base_index', )
+    return HttpResponseRedirect(url)
+
+
+def test_static(request):
+    return render(request, 'test_static.html')
